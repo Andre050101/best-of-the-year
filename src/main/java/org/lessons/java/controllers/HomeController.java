@@ -5,6 +5,7 @@ import org.lessons.java.models.Movie;
 import org.lessons.java.models.Song;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.ui.Model;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,12 +31,39 @@ public class HomeController {
 
     }
 
+    @GetMapping("/movies/{id}")
+    public String movieDetail(@PathVariable int id, Model model) {
+        List<Movie> movies = getBestMovies();
+        Movie selectedMovie = movies.stream().filter(m -> m.getId() == id).findFirst().orElse(null);
+        if(selectedMovie != null){
+            model.addAttribute("title", selectedMovie.getTitle());
+        }
+        else{
+            model.addAttribute("title", "Film non trovato");
+        }
+        return "movie-detail";
+    }
+    
+
     @GetMapping("/songs")
     public String songs(Model model) {
         List<Song> songs = getBestSongs();
         String songTitles = songs.stream().map(Song::getTitle).reduce((a, b) -> a + ", " + b).orElse("Nessuna canzone");
         model.addAttribute("titles", songTitles);
         return "songs";
+    }
+
+    @GetMapping("/songs/{id}")
+    public String songDetail(@PathVariable int id, Model model) {
+        List<Song> songs = getBestSongs();
+        Song selectedSong = songs.stream().filter(s -> s.getId() == id).findFirst().orElse(null);
+        if(selectedSong != null){
+            model.addAttribute("title", selectedSong.getTitle());
+        }
+        else{
+            model.addAttribute("title", "Canzone non trovato");
+        }
+        return "song-detail";
     }
     
     private List<Movie> getBestMovies(){
