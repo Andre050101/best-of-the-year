@@ -1,4 +1,4 @@
-package org.lessons.java.spring.best_of_the_year;
+package org.lessons.java;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
