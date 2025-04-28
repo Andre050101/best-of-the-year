@@ -7,7 +7,10 @@
     <title>Movie Detail</title>
 </head>
 <body>
-    <h1>Dettaglio Film</h1>
-    <p th:text="${movie.title}"></p>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <div class="container">
+        <h1>Dettaglio Film</h1>
+        <p th:text="${movie.title}"></p>
+    </div>    
 </body>
 </html>

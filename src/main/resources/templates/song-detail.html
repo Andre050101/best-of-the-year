@@ -7,7 +7,11 @@
     <title>Song Detail</title>
 </head>
 <body>
-    <h1>Dettaglio Canzone</h1>
-    <p th:text="${song.title}"></p>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <div class="container">
+        <h1>Dettaglio Canzone</h1>
+        <p th:text="${song.title}"></p>
+    </div>
+    
 </body>
 </html>

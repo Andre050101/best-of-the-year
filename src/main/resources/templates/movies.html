@@ -5,13 +5,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Best movies</title>
+    
 </head>
 <body>
-    <h1>Best movies:</h1>
-    <ul>
-        <li th:each="movie : ${movies}">
-            <a th:href="@{/movies/{id}(id=${movie.id})}" th:text="${movie.title}"></a>
-        </li>
-    </ul>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <div class="container d-flex justify-content-center">
+        <div class="flex-column">
+            <h1>Best movies:</h1>
+            <ul class="list-unstyled px-4">
+                <li th:each="movie : ${movies}" class="border border-dark p-2 my-1">
+                    <a th:href="@{/movies/{id}(id=${movie.id})}" th:text="${movie.title}" class="text-decoration-none text-dark"></a>
+                </li>
+            </ul>
+        </div>  
+    </div>
 </body>
 </html>

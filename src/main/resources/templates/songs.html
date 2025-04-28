@@ -7,11 +7,19 @@
     <title>Best Songs</title>
 </head>
 <body>
-    <h1>Best Songs:</h1>
-    <ul>
-        <li th:each="song : ${songs}">
-            <a th:href="@{/songs/{id}(id=${song.id})}" th:text="${song.title}"></a>
-        </li>
-    </ul>
+    <div th:replace="fragments/navbar :: navbar"></div>
+    <div class="container d-flex justify-content-center">
+        <div class="flex-column">
+            <h1>Best Songs:</h1>
+            <ul class="list-unstyled px-4">
+                <li th:each="song : ${songs}" class="border border-dark p-2 my-1">
+                    <a th:href="@{/songs/{id}(id=${song.id})}" th:text="${song.title}" class="text-decoration-none text-dark"></a>
+                </li>
+            </ul>
+        </div>
+    </div>  
 </body>
 </html>
+
+
+
